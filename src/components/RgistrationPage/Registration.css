@@ -1,0 +1,68 @@
+.registration-form-container {
+  background-color: rgba(241, 236, 236, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  width: 300px;
+  color: #ffffff;
+  text-align: center;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #e74c3c;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000000;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+button[type="submit"] {
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #c0392b;
+}
+
+.registration-success {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #27ae60;
+}
