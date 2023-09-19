@@ -92,28 +92,28 @@ const gameReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_USER_DATA":
       // Update state
-      const newStateAfterUserData = {
+      const newUserData = {
         ...state,
         userData: [...state.userData, action.payload],
         currentUserData: action.payload,
       };
 
       // Update local storage with the new state
-      localStorage.setItem("gameState", JSON.stringify(newStateAfterUserData));
+      localStorage.setItem("userData", JSON.stringify(newUserData));
 
-      return newStateAfterUserData;
+      return newUserData;
 
     case "ADD_SCORE_DATA":
       // Update state
-      const newStateAfterScoreData = {
+      const newScoreData = {
         ...state,
         scoreData: [...state.scoreData, action.payload],
       };
 
       // Update local storage with the new state
-      localStorage.setItem("gameState", JSON.stringify(newStateAfterScoreData));
+      localStorage.setItem("gameState", JSON.stringify(newScoreData));
 
-      return newStateAfterScoreData;
+      return newScoreData;
 
     default:
       return state;

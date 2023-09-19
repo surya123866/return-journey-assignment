@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addScoreData } from "../../actions";
 import { GoMute, GoUnmute } from "react-icons/go";
 
@@ -9,6 +9,17 @@ import audio from "../../Assets/squidGameAudio.mp3";
 import Cookies from "js-cookie";
 
 const GreenLightRedLight = () => {
+  // Redux state to get current user data
+  //const currentUser = useSelector((state) => state.gameReducer.currentUserData);
+
+  const currentUser = JSON.parse(
+    localStorage.getItem("userData")
+  ).currentUserData;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const gameDuration = 40;
+
   // State variables
   const [gameStarted, setGameStarted] = useState(false);
   const [score, setScore] = useState(0);
@@ -20,13 +31,6 @@ const GreenLightRedLight = () => {
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef(null);
   const bestScoreRef = useRef(0);
-
-  // Redux state to get current user data
-  const currentUser = useSelector((state) => state.gameReducer.currentUserData);
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const gameDuration = 40;
 
   // Initialize user object
   const user = {
@@ -57,7 +61,7 @@ const GreenLightRedLight = () => {
       const interval = setInterval(() => {
         setIsGreen(false); // Set initially to red
 
-        // Generate a random delay between 1 and 2 seconds
+        // Generating a random delay between 1 and 2 seconds
         const randomDelay = Math.random() * 1000 + 1000;
 
         setTimeout(() => {
@@ -130,12 +134,12 @@ const GreenLightRedLight = () => {
           dispatch(addScoreData(user));
         }
       } else {
+        setWin(false);
+        setGameOver(true);
         const audio = audioRef.current;
         audio.pause();
         audio.loop = true;
         audio.currentTime = 0;
-
-        setGameOver(true);
       }
     }
   };
